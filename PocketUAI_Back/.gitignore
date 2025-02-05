@@ -1,0 +1,22 @@
+.env
+pocketuai*.json
+.env  # Environment variables file
+/*.json  # JSON files in the root directory
+db.sqlite3
+
+# Python temporary files
+*.pyc
+*.pyo
+*.pyd
+*/__pycache__/
+
+# Django migration cache
+**/migrations/__pycache__/
+**/migrations/*.pyc
+
+# Virtual environment
+venv/
+env/
+
+# IDE/editor-specific files
+.vscode/

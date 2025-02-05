@@ -1,0 +1,110 @@
+{
+  "1A": {
+    "food": 10,
+    "housing": 35,
+    "health": 5,
+    "transportation": 5,
+    "university": 25,
+    "non-essential": 5,
+    "savings": 15
+  },
+  "1B": {
+    "food": 15,
+    "housing": 0,
+    "health": 10,
+    "transportation": 10,
+    "university": 40,
+    "non-essential": 5,
+    "savings": 20
+  },
+  "2A": {
+    "food": 15,
+    "housing": 35,
+    "health": 5,
+    "transportation": 10,
+    "university": 20,
+    "non-essential": 5,
+    "savings": 10
+  },
+  "2B": {
+    "food": 20,
+    "housing": 0,
+    "health": 10,
+    "transportation": 10,
+    "university": 40,
+    "non-essential": 10,
+    "savings": 10
+  },
+  "3A": {
+    "food": 20,
+    "housing": 35,
+    "health": 5,
+    "transportation": 10,
+    "university": 15,
+    "non-essential": 10,
+    "savings": 5
+  },
+  "3B": {
+    "food": 25,
+    "housing": 0,
+    "health": 10,
+    "transportation": 15,
+    "university": 30,
+    "non-essential": 15,
+    "savings": 5
+  },
+  "4A": {
+    "food": 25,
+    "housing": 35,
+    "health": 5,
+    "transportation": 10,
+    "university": 10,
+    "non-essential": 10,
+    "savings": 5
+  },
+  "4B": {
+    "food": 30,
+    "housing": 0,
+    "health": 10,
+    "transportation": 15,
+    "university": 30,
+    "non-essential": 10,
+    "savings": 5
+  },
+  "5A": {
+    "food": 30,
+    "housing": 35,
+    "health": 5,
+    "transportation": 10,
+    "university": 10,
+    "non-essential": 8,
+    "savings": 2
+  },
+  "5B": {
+    "food": 35,
+    "housing": 0,
+    "health": 10,
+    "transportation": 15,
+    "university": 25,
+    "non-essential": 10,
+    "savings": 5
+  },
+  "6A": {
+    "food": 35,
+    "housing": 35,
+    "health": 5,
+    "transportation": 10,
+    "university": 5,
+    "non-essential": 8,
+    "savings": 2
+  },
+  "6B": {
+    "food": 40,
+    "housing": 0,
+    "health": 10,
+    "transportation": 15,
+    "university": 25,
+    "non-essential": 8,
+    "savings": 2
+  }
+}
