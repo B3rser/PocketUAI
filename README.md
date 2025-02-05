@@ -55,7 +55,7 @@ Follow these steps to set up and run the project locally:
 1. **Clone the repository**  
    Clone the project by running the following command:
    ```
-   git clone https://github.com/B3rser/PocketUAI_Front.git
+   git clone https://github.com/B3rser/PocketUAI.git
     ```
 
 2. **Install Dependencies for React**  
