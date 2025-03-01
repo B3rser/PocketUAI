@@ -131,7 +131,8 @@ const History = () => {
       setExpenses(expenses_db.sort((a, b) => a.month - b.month));// Update the expenses state with the transformed data
       setPlanData(fetchedPlanData.financialPlan);
     } catch (error) {
-      toast.error(error);
+      setError("fetch_error");
+      setMessage("An error occurred while fetching data.");
     } finally {
       setLoading(false);
     }
@@ -139,7 +140,7 @@ const History = () => {
 
   // If there's an error, display the error message component
   if (error) {
-    return (<ErrorMessage type={error} message={message} />); // Show an error message if there's an error
+    return <ErrorMessage type={error} message={message} />; // Show an error message if there's an error
   }
 
   // If the page is still loading, this will be displayed

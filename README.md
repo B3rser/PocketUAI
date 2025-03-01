@@ -7,6 +7,7 @@
 This is a web application featuring a financial assistant designed to help students achieve a financial goal (currently, saving a specific amount of money).  
 
 ### How It Works  
+- User classification was initially performed using **Clustering**, specifically **K-means**, by extracting the cluster assignment for each dataset entry.  
 - The system uses a **Decision Tree model** to classify students into **12 different financial plans** based on their income and expenses.  
 - Once assigned a plan, the user can adjust it to meet their savings goal within the desired period.  
 - The platform also **tracks progress** and provides insights into spending habits, helping users manage their money effectively.  
@@ -197,3 +198,10 @@ The **History View** lets you review your past financial plans and progress, so 
 <div align="center">
   <img src="assets_repo/history.png" alt="History View" width="90%">
 </div>
+
+## Next Steps 🚀
+
+- Gather and build a dataset to improve user classification using Clustering, while also increasing the amount of data available for training models.  
+- Integrate a chatbot (language model) to answer questions related to both application usage and financial situations.  
+- Implement a better feedback system for users.  
+- Refine and enhance the plan adjustment design. 

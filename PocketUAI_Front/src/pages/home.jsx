@@ -53,8 +53,9 @@ export function Home() {
 
   return (
     <div>
+      <img src="icon.png" alt="PocketUIA Logo" width="200" />
       {/* Greets the user by name if authenticated */}
-      <Typography variant="h4" component="div" sx={{ margin: '10px', color: "black", position: 'relative', top: '-5vh' }}>
+      <Typography variant="h4" component="div" sx={{ margin: '100px 0px 10px 0px', color: "black", position: 'relative', top: '-5vh' }}>
         Welcome {user ? user.name : ""}
       </Typography>
 

@@ -105,7 +105,7 @@ export function Tracking() {
     try {
       // Fetch the financial plan data
       const planData = await financialPlanService.getPlan(user.uid);
-      if (planData.status !== "success") {
+      if (planData.status != "success") {
         setError(planData.status); // Set error if failed to load plan data
         setMessage(planData.message); // Set the error message
         return;
@@ -165,6 +165,8 @@ export function Tracking() {
       expectedPoints = getExpectedPoints(increase, progress[0], duration);
 
       if (regressionData.status != "success") {
+
+
         toast.error(regressionData.message)
       } else {
         projectedPoints = regressionData.data
@@ -241,7 +243,8 @@ export function Tracking() {
       setIncomes([{ label: "Income", value: userData.user.income / userData.user.income * 100 }]);
       setGoalAdvances({ saved: a_saving, goal: planData.financialPlan.goal, goal_name: planData.financialPlan.goal_name });
     } catch (error) {
-      toast.error(error);
+      setError("fetch_error");
+      setMessage("An error occurred while fetching data.");
     } finally {
       setLoading(false);
     }

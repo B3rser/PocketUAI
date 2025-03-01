@@ -114,7 +114,8 @@ export function Plan() {
       // Updates the state with the newly constructed object
       setCardsList(newCardsList);
     } catch (error) {
-      toast.error(error);
+      setError("fetch_error");
+      setMessage("An error occurred while fetching data.");
     } finally {
       setLoading(false);
     }
@@ -122,11 +123,13 @@ export function Plan() {
 
   // If an error is encountered, render an error message
   if (error) {
-    return (<ErrorMessage type={error} message={message} />);
+    return <ErrorMessage type={error} message={message} />;
   }
 
   // If the page is still loading, this will be displayed
   if (loading) {
+    console.log(error)
+
     return <LoadingCircle />;
   }
 

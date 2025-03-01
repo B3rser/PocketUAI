@@ -25,7 +25,7 @@ const ExpenseForm = ({ onSubmit, onClose, planData }) => {
     saving: "",
   });
   const [availableMonthsList, setAvailableMonthsList] = React.useState([]);
-
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
   const { user } = useAuth();
 
   const startDate = DateService.convertToJSDate(planData.date);
@@ -58,18 +58,25 @@ const ExpenseForm = ({ onSubmit, onClose, planData }) => {
     });
   };
 
-  const handleSubmit = () => {
-    const selectedMonth = availableMonthsList.find((m) => m.value === month);
+  const handleSubmit = async () => {
+    setIsSubmitting(true);
+    try {
+      const selectedMonth = availableMonthsList.find((m) => m.value === month);
 
-    if (month && selectedMonth && Object.values(values).every((v) => v !== "")) {
-      onSubmit({
-        month: selectedMonth.value,
-        month_name: selectedMonth.monthName,
-        id_user: user.uid,
-        values: { ...values },
-      });
-    } else {
-      toast.error("Please fill all fields.");
+      if (month && selectedMonth && Object.values(values).every((v) => v !== "")) {
+        await onSubmit({
+          month: selectedMonth.value,
+          month_name: selectedMonth.monthName,
+          id_user: user.uid,
+          values: { ...values },
+        });
+      } else {
+        toast.error("Please fill all fields.");
+      }
+    } catch (error) {
+      console.error("Submit error:", error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -106,7 +113,7 @@ const ExpenseForm = ({ onSubmit, onClose, planData }) => {
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose}>Cancel</Button>
-        <Button onClick={handleSubmit} color="primary">
+        <Button onClick={handleSubmit} color="primary" disabled={isSubmitting}>
           Accept
         </Button>
       </DialogActions>

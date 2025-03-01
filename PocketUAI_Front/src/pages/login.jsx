@@ -1,10 +1,10 @@
-import React, { useState } from 'react';  
+import React, { useState } from 'react';
 import Input from '../components/inputField';  // Reusable input component for form fields  
-import { useNavigate } from 'react-router-dom';  // Hook for navigation between routes  
+import { useNavigate, Link } from 'react-router-dom';  // Hook for navigation between routes  
 import { useAuth } from '../context/auth.context';  // Context for authentication management  
 
 // Login component that allows users to authenticate  
-const Login = () => {  
+const Login = () => {
   // Set the document title when the component mounts  
   React.useEffect(() => {
     document.title = 'Login';
@@ -12,6 +12,7 @@ const Login = () => {
 
   const { login } = useAuth();  // Custom hook to access the login function  
   const nav = useNavigate();  // Hook to navigate users upon successful login  
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
 
   // Local state to handle form data for login  
   const [formData, setFormData] = useState({
@@ -26,10 +27,17 @@ const Login = () => {
 
   // Function to handle form submission  
   const handleSubmit = async (e) => {
-    e.preventDefault();  // Prevent the default form submission behavior  
-    const response = await login(formData);  // Call the login method with form data  
-    if (response.status === "success") {
-      nav("/home");  // Navigate to the home page if login is successful  
+    setIsSubmitting(true);
+    try {
+      e.preventDefault();  // Prevent the default form submission behavior  
+      const response = await login(formData);  // Call the login method with form data  
+      if (response.status === "success") {
+        nav("/home");  // Navigate to the home page if login is successful  
+      }
+    } catch (error) {
+      console.error("Submit error:", error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -37,12 +45,13 @@ const Login = () => {
     <form onSubmit={handleSubmit}>
       {/* Input field for the email */}
       <Input label="Email" type="email" name="email" value={formData.email} onChange={handleChange} />
-      
+
       {/* Input field for the password */}
       <Input label="Password" type="password" name="password" value={formData.password} onChange={handleChange} />
-      
+
       {/* Submit button for the form */}
       <button type="submit">Login</button>
+      <p>Don't have an account? <Link to="/signup">Sign up here</Link></p>
     </form>
   );
 };

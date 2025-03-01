@@ -13,6 +13,7 @@ import { modelsService } from '../services/models.service';
 import { DateService } from '../services/date.service';
 import { ButtonAction } from './button_action';
 import LoadingCircle from './loading_circle';
+import ErrorMessage from './error_message';
 
 export function NewPlanQuestions() {
     const nav = useNavigate();
@@ -37,6 +38,7 @@ export function NewPlanQuestions() {
     const [error, setError] = React.useState(null);
     const [message, setMessage] = React.useState(null);
     const [loading, setLoading] = React.useState(true);
+    const [isSubmitting, setIsSubmitting] = React.useState(false);
 
     React.useEffect(() => {
         document.title = 'New Plan';
@@ -84,6 +86,7 @@ export function NewPlanQuestions() {
 
         console.log(user_data)
 
+        setIsSubmitting(true);
         try {
             const modelData = await modelsService.new_plan(user_data);
             if (modelData.status !== "success") {
@@ -181,6 +184,8 @@ export function NewPlanQuestions() {
         } catch (error) {
             console.log(error)
             toast.error("An error occurred while processing the request.");
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -220,7 +225,8 @@ export function NewPlanQuestions() {
 
             setFormData(initialValues);
         } catch (error) {
-            toast.error(error);
+            setError("fetch_error");
+            setMessage("An error occurred while fetching data.");
         } finally {
             setLoading(false);
         }
@@ -278,7 +284,7 @@ export function NewPlanQuestions() {
                             Next
                         </ButtonAction>)}
                         {currentQuestionIndex === questions.length - 1 && (
-                            <ButtonAction onClick={handleSubmit} >Submit</ButtonAction>
+                            <ButtonAction onClick={handleSubmit} disabled={isSubmitting} >Submit</ButtonAction>
                         )}
                     </Box>
                     <Typography variant="h7" sx={{ marginTop: "10px" }}>
